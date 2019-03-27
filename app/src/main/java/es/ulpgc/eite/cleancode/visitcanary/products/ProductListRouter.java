@@ -23,6 +23,7 @@ public class ProductListRouter implements ProductListContract.Router {
   public void navigateToProductDetailScreen() {
     Context context = mediator.getApplicationContext();
     Intent intent = new Intent(context, ProductDetailActivity.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     context.startActivity(intent);
   }
 

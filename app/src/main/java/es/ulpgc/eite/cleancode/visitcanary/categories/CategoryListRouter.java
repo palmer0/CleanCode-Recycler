@@ -23,6 +23,7 @@ public class CategoryListRouter implements CategoryListContract.Router {
   public void navigateToProductListScreen() {
     Context context = mediator.getApplicationContext();
     Intent intent = new Intent(context, ProductListActivity.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     context.startActivity(intent);
   }
 
