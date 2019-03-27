@@ -42,11 +42,12 @@ public class CatalogRepository implements RepositoryContract {
 
   private CatalogRepository(Context context) {
     this.context = context;
-    categories = new ArrayList();
+    //categories = new ArrayList();
   }
 
   @Override
   public void loadCatalog(final FetchCatalogDataCallback callback) {
+
 
     AsyncTask.execute(new Runnable() {
 
@@ -150,6 +151,8 @@ public class CatalogRepository implements RepositoryContract {
 
       JSONObject jsonObject = new JSONObject(json);
       JSONArray jsonArray = jsonObject.getJSONArray(JSON_ROOT);
+
+      categories = new ArrayList();
 
       if (jsonArray.length() > 0) {
 
