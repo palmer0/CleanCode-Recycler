@@ -1,12 +1,13 @@
 package es.ulpgc.eite.cleancode.visitcanary.categories;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 
 import es.ulpgc.eite.cleancode.visitcanary.R;
 import es.ulpgc.eite.cleancode.visitcanary.data.CategoryItem;
