@@ -18,6 +18,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
 import es.ulpgc.eite.cleancode.visitcanary.R;
+import es.ulpgc.eite.cleancode.visitcanary.app.CatalogMediator;
 import es.ulpgc.eite.cleancode.visitcanary.data.ProductItem;
 import es.ulpgc.eite.cleancode.visitcanary.products.ProductListActivity;
 
@@ -35,12 +36,17 @@ public class ProductDetailActivity
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_product_detail);
+
     Toolbar toolbar = findViewById(R.id.detail_toolbar);
     setSupportActionBar(toolbar);
 
     actionBar = getSupportActionBar();
     if (actionBar != null) {
       actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    if(savedInstanceState == null) {
+      CatalogMediator.resetInstance();
     }
 
     // do the setup
@@ -85,6 +91,24 @@ public class ProductDetailActivity
     reqBuilder.into(imageView);
   }
 
+//  private void loadImageFromURL(final ImageView imageView, final String imageUrl){
+//    Log.e(TAG, "loadImageFromURL()");
+//    Log.e(TAG, "url: "+imageUrl);
+//
+//
+//    ImageLoader imageLoader = ImageLoader.getInstance();
+//    imageLoader.init(ImageLoaderConfiguration.createDefault(this));
+//    imageLoader.displayImage(imageUrl, imageView);
+//
+//    //Picasso.get().load(imageUrl).into(imageView);
+//
+//    /*
+//    Glide.with(this)
+//        .load(imageUrl)
+//        .signature(new ObjectKey(imageUrl))
+//        .into(imageView);
+//    */
+//  }
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {

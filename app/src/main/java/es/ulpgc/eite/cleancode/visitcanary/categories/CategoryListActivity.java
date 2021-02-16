@@ -1,5 +1,6 @@
 package es.ulpgc.eite.cleancode.visitcanary.categories;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,7 +11,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import es.ulpgc.eite.cleancode.visitcanary.R;
+import es.ulpgc.eite.cleancode.visitcanary.app.CatalogMediator;
 import es.ulpgc.eite.cleancode.visitcanary.data.CategoryItem;
+import es.ulpgc.eite.cleancode.visitcanary.products.ProductListActivity;
 
 
 public class CategoryListActivity
@@ -27,6 +30,7 @@ public class CategoryListActivity
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_category_list);
+
 
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
@@ -48,11 +52,23 @@ public class CategoryListActivity
     RecyclerView recyclerView = findViewById(R.id.category_list);
     recyclerView.setAdapter(listAdapter);
 
+    if(savedInstanceState == null) {
+      CatalogMediator.resetInstance();
+    }
+
+
     // do the setup
     CategoryListScreen.configure(this);
 
     // do some work
     presenter.fetchCategoryListData();
+  }
+
+  @Override
+  public void navigateToProductListScreen() {
+    Intent intent = new Intent(this, ProductListActivity.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    startActivity(intent);
   }
 
   @Override

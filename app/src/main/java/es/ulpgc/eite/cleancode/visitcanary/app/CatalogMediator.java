@@ -1,14 +1,12 @@
 package es.ulpgc.eite.cleancode.visitcanary.app;
 
-import android.app.Application;
-
 import es.ulpgc.eite.cleancode.visitcanary.categories.CategoryListState;
 import es.ulpgc.eite.cleancode.visitcanary.data.CategoryItem;
 import es.ulpgc.eite.cleancode.visitcanary.data.ProductItem;
 import es.ulpgc.eite.cleancode.visitcanary.product.ProductDetailState;
 import es.ulpgc.eite.cleancode.visitcanary.products.ProductListState;
 
-public class CatalogMediator extends Application {
+public class CatalogMediator  {
 
   private CategoryListState categoryListState = new CategoryListState();
   private ProductListState productListState = new ProductListState();
@@ -16,6 +14,25 @@ public class CatalogMediator extends Application {
 
   private CategoryItem category;
   private ProductItem product;
+
+  private static CatalogMediator INSTANCE;
+
+  private CatalogMediator() {
+
+  }
+
+  public static void resetInstance() {
+    INSTANCE = null;
+  }
+
+
+  public static CatalogMediator getInstance() {
+    if(INSTANCE ==null){
+      INSTANCE = new CatalogMediator();
+    }
+
+    return INSTANCE;
+  }
 
   public CategoryListState getCategoryListState() {
     return categoryListState;

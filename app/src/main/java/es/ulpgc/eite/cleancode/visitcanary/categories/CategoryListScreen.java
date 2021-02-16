@@ -16,16 +16,18 @@ public class CategoryListScreen {
     WeakReference<FragmentActivity> context =
         new WeakReference<>((FragmentActivity) view);
 
-    CatalogMediator mediator = (CatalogMediator) context.get().getApplication();
-    CategoryListState state = mediator.getCategoryListState();
+    //CatalogMediator mediator = (CatalogMediator) context.get().getApplication();
+    CatalogMediator mediator = CatalogMediator.getInstance();
+    //CategoryListState state = mediator.getCategoryListState();
     RepositoryContract repository = CatalogRepository.getInstance(context.get());
 
-    CategoryListContract.Router router = new CategoryListRouter(mediator);
-    CategoryListContract.Presenter presenter=new CategoryListPresenter(state);
+    //CategoryListContract.Router router = new CategoryListRouter(mediator);
+    //CategoryListContract.Presenter presenter=new CategoryListPresenter(state);
+    CategoryListContract.Presenter presenter=new CategoryListPresenter(mediator);
     CategoryListModel model = new CategoryListModel(repository);
     presenter.injectView(new WeakReference<>(view));
     presenter.injectModel(model);
-    presenter.injectRouter(router);
+    //presenter.injectRouter(router);
     view.injectPresenter(presenter);
 
   }

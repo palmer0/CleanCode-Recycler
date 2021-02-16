@@ -11,12 +11,14 @@ interface CategoryListContract {
     void injectPresenter(Presenter presenter);
 
     void displayCategoryListData(CategoryListViewModel viewModel);
+
+    void navigateToProductListScreen();
   }
 
   interface Presenter {
     void injectView(WeakReference<View> view);
     void injectModel(Model model);
-    void injectRouter(Router router);
+    //void injectRouter(Router router);
 
     void fetchCategoryListData();
     void selectCategoryListData(CategoryItem item);
@@ -28,10 +30,10 @@ interface CategoryListContract {
   }
 
 
-  interface Router {
-
-    void navigateToProductListScreen();
-    void passDataToProductListScreen(CategoryItem item);
-  }
+//  interface Router {
+//
+//    void navigateToProductListScreen();
+//    void passDataToProductListScreen(CategoryItem item);
+//  }
 
 }
