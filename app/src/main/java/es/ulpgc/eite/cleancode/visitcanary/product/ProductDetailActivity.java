@@ -18,7 +18,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
 import es.ulpgc.eite.cleancode.visitcanary.R;
-import es.ulpgc.eite.cleancode.visitcanary.app.CatalogMediator;
 import es.ulpgc.eite.cleancode.visitcanary.data.ProductItem;
 import es.ulpgc.eite.cleancode.visitcanary.products.ProductListActivity;
 
@@ -45,9 +44,11 @@ public class ProductDetailActivity
       actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
+    /*
     if(savedInstanceState == null) {
       CatalogMediator.resetInstance();
     }
+    */
 
     // do the setup
     ProductDetailScreen.configure(this);

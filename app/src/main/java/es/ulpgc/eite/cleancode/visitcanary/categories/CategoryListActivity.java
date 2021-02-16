@@ -11,7 +11,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import es.ulpgc.eite.cleancode.visitcanary.R;
-import es.ulpgc.eite.cleancode.visitcanary.app.CatalogMediator;
 import es.ulpgc.eite.cleancode.visitcanary.data.CategoryItem;
 import es.ulpgc.eite.cleancode.visitcanary.products.ProductListActivity;
 
@@ -52,10 +51,11 @@ public class CategoryListActivity
     RecyclerView recyclerView = findViewById(R.id.category_list);
     recyclerView.setAdapter(listAdapter);
 
+    /*
     if(savedInstanceState == null) {
       CatalogMediator.resetInstance();
     }
-
+    */
 
     // do the setup
     CategoryListScreen.configure(this);

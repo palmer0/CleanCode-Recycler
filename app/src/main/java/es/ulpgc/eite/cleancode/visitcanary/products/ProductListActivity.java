@@ -1,6 +1,5 @@
 package es.ulpgc.eite.cleancode.visitcanary.products;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +13,6 @@ import androidx.core.app.NavUtils;
 import androidx.recyclerview.widget.RecyclerView;
 
 import es.ulpgc.eite.cleancode.visitcanary.R;
-import es.ulpgc.eite.cleancode.visitcanary.app.CatalogMediator;
 import es.ulpgc.eite.cleancode.visitcanary.data.CategoryItem;
 import es.ulpgc.eite.cleancode.visitcanary.data.ProductItem;
 import es.ulpgc.eite.cleancode.visitcanary.product.ProductDetailActivity;
@@ -55,9 +53,11 @@ public class ProductListActivity
     RecyclerView recyclerView = findViewById(R.id.product_list);
     recyclerView.setAdapter(listAdapter);
 
+    /*
     if(savedInstanceState == null) {
       CatalogMediator.resetInstance();
     }
+    */
 
     // do the setup
     ProductListScreen.configure(this);
