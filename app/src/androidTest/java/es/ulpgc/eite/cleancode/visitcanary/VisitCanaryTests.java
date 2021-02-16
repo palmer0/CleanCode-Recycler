@@ -22,7 +22,6 @@ import es.ulpgc.eite.cleancode.visitcanary.categories.CategoryListActivity;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -56,15 +55,23 @@ public class VisitCanaryTests {
         .check(matches(withText("Tenerife")));
 
     onView(new RecyclerViewMatcher(R.id.category_list)
-        .atPositionOnView(2, R.id.content))
-        .check(matches(withText("Gran Canaria")));
-
-    onView(new RecyclerViewMatcher(R.id.category_list)
         .atPositionOnView(5, R.id.content))
         .check(matches(withText("La Gomera")));
 
+    /*
+    onView(new RecyclerViewMatcher(R.id.category_list)
+        .atPositionOnView(2, R.id.content))
+        .check(matches(withText("Gran Canaria")));
+
     ViewInteraction recyclerView = onView(allOf(withId(R.id.category_list)));
     recyclerView.perform(actionOnItemAtPosition(2, click()));
+    */
+
+    ViewInteraction recyclerView1 =
+        onView(new RecyclerViewMatcher(R.id.category_list)
+            .atPositionOnView(2, R.id.content))
+            .check(matches(withText("Gran Canaria")));
+    recyclerView1.perform(click());
 
     ViewInteraction textView6 = onView(allOf(
         withText("Gran Canaria"),
@@ -102,8 +109,16 @@ public class VisitCanaryTests {
         .atPositionOnView(0, R.id.content))
         .check(matches(withText("Tenerife")));
 
+    /*
     ViewInteraction recyclerView2 = onView(allOf(withId(R.id.category_list)));
     recyclerView2.perform(actionOnItemAtPosition(4, click()));
+    */
+
+    ViewInteraction recyclerView2 =
+        onView(new RecyclerViewMatcher(R.id.category_list)
+            .atPositionOnView(4, R.id.content))
+            .check(matches(withText("La Palma")));
+    recyclerView2.perform(click());
 
     ViewInteraction textView11 = onView(allOf(
         withText("La Palma"),
@@ -118,12 +133,20 @@ public class VisitCanaryTests {
         .atPositionOnView(0, R.id.content))
         .check(matches(withText("Santa Cruz de la Palma")));
 
+    /*
     onView(new RecyclerViewMatcher(R.id.product_list)
         .atPositionOnView(1, R.id.content))
         .check(matches(withText("Caldera de Taburiente National Park")));
 
     ViewInteraction recyclerView3 = onView(allOf(withId(R.id.product_list)));
     recyclerView3.perform(actionOnItemAtPosition(1, click()));
+    */
+
+    ViewInteraction recyclerView3 =
+        onView(new RecyclerViewMatcher(R.id.product_list)
+          .atPositionOnView(1, R.id.content))
+          .check(matches(withText("Caldera de Taburiente National Park")));
+    recyclerView3.perform(click());
 
     ViewInteraction textView14 = onView(allOf(
         withText("Caldera de Taburiente National Park"),
@@ -197,7 +220,7 @@ public class VisitCanaryTests {
         .check(matches(withText("La Gomera")));
   }
 
-  public static class RecyclerViewMatcher {
+  public class RecyclerViewMatcher {
 
     private final int recyclerViewId;
 
