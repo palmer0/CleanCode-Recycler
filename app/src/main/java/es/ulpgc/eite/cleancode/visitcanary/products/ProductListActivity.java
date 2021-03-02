@@ -69,7 +69,7 @@ public class ProductListActivity
   @Override
   public void navigateToProductDetailScreen() {
     Intent intent = new Intent(this, ProductDetailActivity.class);
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     startActivity(intent);
   }
 
